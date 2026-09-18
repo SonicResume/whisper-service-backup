@@ -1,33 +1,74 @@
-# Whisper Service Backup
+# Whisper Transcription Service
 
-Backup documentation for the local Whisper transcription service used by Justice on Call.
+A hosted Whisper-powered transcription service that applications can use
+when speech-to-text is required.
 
-## Whisper executable
+## What It Does
 
-/home/lee1967/dev/voice-generator/.venv/bin/whisper
+The service accepts supported audio and video recordings and converts
+spoken content into text using Whisper.
 
-## FFmpeg
+It is designed to be used by applications, tools, and temporary workflows
+that need transcription without having to operate their own transcription
+engine.
 
-/usr/bin/ffmpeg
+## Service Use
 
-## Current model
+Applications can use the service when transcription is needed for a
+particular task or workflow.
 
-small
+Examples include:
 
-## Public transcription endpoint
+- Interview transcription
+- Audio and video transcription
+- Recorded conversations
+- Intake workflows
+- Scheduling and booking workflows
+- Temporary application tools
+- Other authorized workflows requiring speech-to-text
 
-https://transcribe.justiceoncall.ca/api/interview/transcribe
+A workflow can use the transcription capability temporarily and stop using
+it when the task is complete.
 
-## Architecture
+## How It Works
 
-Internet
-→ Cloudflare Tunnel
-→ local Next.js transcription service
-→ FFmpeg
-→ local OpenAI Whisper
-→ transcript
+An authorized application submits an audio or video recording.
 
-## Important
+The service processes the media with Whisper and returns the resulting
+transcription to the requesting application.
 
-The Whisper virtual environment and model files are intentionally NOT stored in Git.
-They must be rebuilt/downloaded on the host if the machine is replaced.
+The underlying Whisper processing infrastructure is privately operated.
+
+## Access
+
+The service is intended for authorized application use.
+
+Access control is required before a request can be processed.
+
+The service's connection details and authentication credentials are
+intentionally kept outside this repository.
+
+## Privacy
+
+Recordings and transcripts may contain confidential information.
+
+Applications using the service are responsible for handling submitted media
+and returned transcripts appropriately.
+
+Temporary processing data should be removed when it is no longer required.
+
+## Integration
+
+The service is designed to be reusable.
+
+An application can integrate the transcription capability when needed
+without embedding a separate transcription engine into the application.
+
+## Repository
+
+This repository contains the service documentation and source required to
+maintain and recover the service.
+
+Private infrastructure details, connection information, credentials,
+certificates, model files, recordings, and confidential transcripts are not
+stored here.
